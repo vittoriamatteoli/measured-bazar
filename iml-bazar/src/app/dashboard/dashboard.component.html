@@ -43,4 +43,6 @@
     } }
   </div>
   }
+  <button class="addBtn" (click)="openProjectForm()">➕ Add Project</button>
+  <app-project-form (projectAdded)="addProject($event)"></app-project-form>
 </div>

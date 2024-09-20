@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { CommonModule, NgTemplateOutlet } from '@angular/common';
-import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
+import { DashboardComponent } from '../app/dashboard/dashboard.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({

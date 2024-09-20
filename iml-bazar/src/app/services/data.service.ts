@@ -20,12 +20,8 @@ export class DataService {
     );
   }
 
-  addProject(): Observable<Project> {
-    const newProject = {
-      name: 'New Project',
-      capacity: 10,
-      actual_capacity: 10,
-    };
+  addProject(project: Project): Observable<Project> {
+    const newProject = project;
     return this.http.post<Project>(this.apiUrl, newProject);
   }
 

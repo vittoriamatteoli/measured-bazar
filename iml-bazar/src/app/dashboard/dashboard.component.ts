@@ -1,21 +1,28 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { DataService } from '../../services/data.service';
-import { Project } from '../../Types/Project';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { DataService } from '../services/data.service';
+import { Project } from '../Types/Project';
 import { RouterLink } from '@angular/router';
-import { User } from '../../Types/User';
-
+import { User } from '../Types/User';
+import { ProjectFormComponent } from './project-form/project-form/project-form.component';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, ProjectFormComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardComponent implements OnInit {
+  @ViewChild(ProjectFormComponent) projectForm!: ProjectFormComponent;
   projects: Project[] = [];
   users: User[] = [];
   currentUser!: User;
+
   constructor(private dataService: DataService) {}
   ngOnInit() {
     this.getProjects();
@@ -92,5 +99,23 @@ export class DashboardComponent implements OnInit {
 
   updateProjectsInStorage(): void {
     localStorage.setItem('projects', JSON.stringify(this.projects));
+  }
+
+  openProjectForm() {
+    if (this.projectForm) {
+      this.projectForm.openModal();
+    }
+  }
+
+  addProject(projectData: { name: string; capacity: number }) {
+    const newProject: Project = {
+      id: this.projects.length + 1,
+      name: projectData.name,
+      capacity: projectData.capacity,
+      actual_capacity: 0,
+    };
+    this.projects.push(newProject);
+    this.updateProjectsInStorage();
+    this.dataService.addProject(newProject).subscribe();
   }
 }
