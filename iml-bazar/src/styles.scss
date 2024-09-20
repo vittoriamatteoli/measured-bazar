@@ -1,0 +1,22 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 20px;
+  background-color: #f4f4f9;
+  color: black;
+  overflow-x: auto;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+
+  // Scrollbar styles
+  &::-webkit-scrollbar {
+    display: none; // Hide scrollbar
+  }
+  -ms-overflow-style: none; // For Internet Explorer and Edge
+  scrollbar-width: none; // For Firefox
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
