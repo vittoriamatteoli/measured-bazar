@@ -91,14 +91,6 @@
             "styles": ["src/styles.scss"],
             "scripts": []
           }
-        },
-        "deploy": {
-          "builder": "@netlify-builder/deploy:deploy",
-          "options": {
-            "outputPath": "dist/iml-bazar",
-            "netlifyToken": "nfp_KU7X2XG2ebrb5P6xoHA3rUh2kkj1D6CT7247",
-            "siteId": "a6c02732-bb19-48ec-b2e8-49cf55a65ea2"
-          }
         }
       }
     }
