@@ -33,7 +33,7 @@ jobs:
         uses: actions/setup-node@v4
 
       - name: Install npm and dependencies
-         run: npm install
+        run: npm install
 
       - name: Build 
         run: npm run build
