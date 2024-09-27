@@ -1,7 +1,0 @@
-{
-  "typescript.inlayHints.functionLikeReturnTypes.enabled": false,
-  "typescript.inlayHints.propertyDeclarationTypes.enabled": false,
-  "typescript.inlayHints.parameterTypes.enabled": false,
-  "typescript.inlayHints.variableTypes.enabled": true,
-  "editor.defaultFoldingRangeProvider": null
-}
