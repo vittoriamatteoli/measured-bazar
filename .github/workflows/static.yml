@@ -37,7 +37,7 @@ jobs:
         with:
           node-version: 20
 
-      - uses: pnpm/action-setup@v2
+      - uses: npm/action-setup@v2
         name: Install npm and dependencies
         with:
           version: 8
