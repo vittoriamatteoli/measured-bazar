@@ -33,7 +33,7 @@ jobs:
         run: npm install
 
       - name: Build Angular app
-        run: ng build --prod
+        run: ng build
 
       - name: List build files
         run: ls -la ./dist/iml-bazar # Check if the files exist in this path
