@@ -1,48 +1,61 @@
 <div class="container">
   <div class="project-list">
-    <h4>Start line <button (click)="clearField()">Clear</button></h4>
-    @for (user of users; track user.id) { @if (user.status === 'start-line') {
-    <div
-      class="user-card"
-      draggable="true"
-      (dragstart)="onDragStart($event, user, undefined)"
-      (dragover)="onDragOver($event)"
-    >
-      <img src="{{ user.avatar }}" alt="{{ user.name }}" />
-      <p class="name">{{ user.name }}</p>
-    </div>
-    } }
-  </div>
-
-  @for (project of projects; track project.id) {
-  <div
-    class="project-list"
-    (drop)="onDrop($event, project)"
-    (dragover)="onDragOver($event)"
-  >
     <h4 class="title">
-      {{ project.name }}
-      <p>[{{ project.capacity }}]</p>
+      Start line <button (click)="clearField()">Clear</button>
     </h4>
-
-    <p class="actual-capacity">
-      {{ project.actual_capacity }}
-      @if (project.actual_capacity >= project.capacity) {Full}
-    </p>
-
-    @for (user of users; track user.id) { @if (user.status === project.name) {
+    <ng-container>
+      @for (user of users; track user.id) { @if (user.status === 'start-line') {
+      <div
+        class="user-card"
+        draggable="true"
+        (dragstart)="onDragStart($event, user, undefined)"
+        (dragover)="onDragOver($event)"
+      >
+        <img src="{{ user.avatar }}" alt="{{ user.name }}" />
+        <p class="name">{{ user.name }}</p>
+      </div>
+      } }
+    </ng-container>
+  </div>
+  <ng-container>
+    @for (project of projects; track project.id) {
     <div
-      class="user-card"
-      draggable="true"
-      (dragstart)="onDragStart($event, user, project)"
+      class="project-list"
+      (drop)="onDrop($event, project)"
       (dragover)="onDragOver($event)"
     >
-      <img src="{{ user.avatar }}" alt="{{ user.name }}" />
-      <p class="name">{{ user.name }}</p>
+      <button (click)="deleteProject(project)">X</button>
+      <h4 class="title">
+        {{ project.name }}
+        <p>[{{ project.capacity }}]</p>
+      </h4>
+
+      <p
+        class="actual-capacity"
+        [innerText]="
+          project.actual_capacity === project.capacity
+            ? 'Full'
+            : project.actual_capacity
+        "
+      ></p>
+      <ng-container>
+        @for (user of users; track user.id) { @if (user.status === project.name)
+        {
+        <div
+          class="user-card"
+          draggable="true"
+          (dragstart)="onDragStart($event, user, project)"
+          (dragover)="onDragOver($event)"
+        >
+          <img src="{{ user.avatar }}" alt="{{ user.name }}" />
+          <p class="name">{{ user.name }}</p>
+        </div>
+        } }
+      </ng-container>
     </div>
-    } }
-  </div>
-  }
-  <button class="addBtn" (click)="openProjectForm()">➕ Add Project</button>
-  <app-project-form (projectAdded)="addProject($event)"></app-project-form>
+    }
+    <button class="addBtn" (click)="openProjectForm()">➕ Add Project</button>
+    <app-project-form (projectAdded)="addProject($event)"></app-project-form>
+  </ng-container>
 </div>
+//create a reusable component for the user-card

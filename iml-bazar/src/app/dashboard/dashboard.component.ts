@@ -6,13 +6,22 @@ import {
 } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { Project } from '../Types/Project';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterModule } from '@angular/router';
 import { User } from '../Types/User';
 import { ProjectFormComponent } from './project-form/project-form/project-form.component';
+import { NgClass } from '@angular/common';
+import { UsersComponent } from '../users/users.component';
+
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [RouterLink, ProjectFormComponent],
+  imports: [
+    RouterLink,
+    ProjectFormComponent,
+    RouterModule,
+    NgClass,
+    UsersComponent,
+  ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -117,5 +126,12 @@ export class DashboardComponent implements OnInit {
     this.projects.push(newProject);
     this.updateProjectsInStorage();
     this.dataService.addProject(newProject).subscribe();
+  }
+
+  deleteProject(project: Project) {
+    this.projects = this.projects.filter((p) => p.id !== project.id);
+    this.updateProjectsInStorage();
+    this.dataService.deleteProject(project).subscribe();
+    console.log('project deleted', project.id);
   }
 }

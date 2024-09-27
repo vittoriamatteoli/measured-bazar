@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Project } from '../Types/Project';
 import { HttpClient } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 import { User } from '../Types/User';
 
@@ -25,48 +26,17 @@ export class DataService {
     return this.http.post<Project>(this.apiUrl, newProject);
   }
 
-  deleteProject(id: number): Observable<Project> {
-    return this.http.delete<Project>(`${this.apiUrl}/${id}`);
+  //create an editProject method here
+
+  deleteProject(project: Project): Observable<Project> {
+    console.log('project', project);
+    return this.http.delete<Project>(`${this.apiUrl}/${project.id}`);
   }
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.api);
   }
-
-  // getProject(id: number): Observable<Project> {
-  //   const url = `${this.apiUrl}/${id}`;
-  //   return this.http.get<Project>(url).pipe(
-  //     tap((_) => console.log(`fetched hero id=${id}`)),
-  //     catchError((err, caught) => {
-  //       console.log(error, `getHero id=${id}`);
-  //       return caught;
-  //     })
-  //   );
-  // }
-  // editProject(
-  //   id: number,s
-  //   name: string,
-  //   capacity: number,
-  //   actual_capacity: number
-  // ): Observable<Project> {
-  //   return this.http.put<Project>(this.apiUrl + '/' + id, {
-  //     name: name,
-  //     capacity: capacity,
-  //     actual_capacity: actual_capacity,
-  //   });
-  // }
-
-  // editProject() {
-  //   fetch(this.apiUrl + '/1', {
-  //     method: 'PUT',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({
-  //       name: 'Updated Project',
-  //       capacity: 200,
-  //       actual_capacity: 150,
-  //     }),
-  //   });
-  // }
+  // create an addUser method here
+  // create an editUser method here
+  //create a deleteUser method here
 }

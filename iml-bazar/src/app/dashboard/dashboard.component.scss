@@ -2,25 +2,37 @@
   display: flex;
   overflow-x: visible;
   white-space: nowrap;
-
   gap: 20px;
   width: max-content;
   height: 100%;
   padding: 0 20px;
-
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none;
   }
-
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-
+  button {
+    background-color: rgb(204, 199, 184);
+    // background-color: black;
+    color: #fff;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8em;
+    &:hover {
+      background-color: #fff;
+      color: #606060;
+      border: solid 1px #606060;
+    }
+  }
   .addBtn {
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
     font-size: 1.2em;
     cursor: pointer;
+    color: #606060;
   }
 }
 
@@ -31,10 +43,12 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   min-width: 300px;
-  height: 80vh;
+  height: 75vh;
   padding: 20px;
   overflow-y: auto;
-
+  .no-capacity {
+    display: none;
+  }
   &::-webkit-scrollbar {
     display: none;
   }
@@ -42,30 +56,11 @@
   scrollbar-width: none;
   scroll-behavior: smooth;
 
-  h4 {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-    color: #3f51b5;
-    text-align: center;
-  }
-
-  button {
-    background-color: #f44336;
-    color: #fff;
-    border: none;
-    padding: 4px 8px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.8em;
-    &:hover {
-      background-color: #d32f2f;
-    }
-  }
-
   .title {
     font-size: 1.2em;
     margin-bottom: 10px;
-    color: #3f51b5;
+    color: #606060;
+    text-align: center;
   }
   .actual-capacity {
     text-align: center;
@@ -76,7 +71,7 @@
 }
 
 .user-card {
-  background-color: #fff;
+  background-color: rgb(204, 199, 184);
   border: 1px solid #ccc;
   border-radius: 6px;
   padding: 10px;
