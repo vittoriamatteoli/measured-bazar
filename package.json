@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build: prod": "ng build --configuration=production --base-href=/iml-bazar/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:iml-bazar": "node dist/iml-bazar/server/server.mjs"
