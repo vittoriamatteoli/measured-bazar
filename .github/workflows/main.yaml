@@ -18,11 +18,8 @@ jobs:
           node-version: 20
 
       - name: Build Angular app to prod
-        working-directory:
+        working-directory: /home/runner/work/iml-bazar/iml-bazar
         run: npm install && npm run build:prod
-
-      - name: Print working directory
-        run: pwd
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
